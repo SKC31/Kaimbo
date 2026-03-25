@@ -491,6 +491,123 @@
         }
 
         /* ══════════════════════════════
+           PROJECTS
+        ══════════════════════════════ */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1.5px solid rgba(34, 197, 94, 0.25);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            border-color: var(--primary-green);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(34, 197, 94, 0.1);
+        }
+
+        .project-screenshot {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background: #111;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+        }
+
+        .project-screenshot-placeholder {
+            width: 100%;
+            height: 180px;
+            background: #111;
+            border-bottom: 1px solid rgba(34, 197, 94, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(34, 197, 94, 0.3);
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+        }
+
+        .project-body {
+            padding: 22px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 10px;
+        }
+
+        .project-name {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-white);
+            letter-spacing: 0.02em;
+        }
+
+        .project-description {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 13px;
+            line-height: 1.65;
+            color: var(--text-gray);
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .project-tag {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--primary-green);
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 4px;
+            padding: 3px 8px;
+            letter-spacing: 0.05em;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 16px;
+            margin-top: 8px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .project-link {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-white);
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .project-link:hover { color: var(--primary-green); }
+
+        .project-link .link-arrow { color: var(--primary-green); }
+
+        /* ══════════════════════════════
            TABLET  (≤ 900px)
         ══════════════════════════════ */
         @media (max-width: 900px) {
@@ -554,6 +671,14 @@
             .hobby-icon { font-size: 26px; }
             .hobby-name { font-size: 12px; letter-spacing: 1px; }
 
+            /* Projects — single column on mobile */
+            .projects-grid { grid-template-columns: 1fr; gap: 20px; }
+            .project-screenshot,
+            .project-screenshot-placeholder { height: 160px; }
+            .project-body { padding: 16px 18px; }
+            .project-name { font-size: 14px; }
+            .project-description { font-size: 12px; }
+
             /* Contact */
             .contact-text { font-size: 14px; word-break: break-all; }
             .contact-icon { width: 40px; height: 40px; }
@@ -575,6 +700,7 @@
         <a href="#home"           class="nav-link">Home</a>
         <a href="#about"          class="nav-link">About Me</a>
         <a href="#skills"         class="nav-link">Skills</a>
+        <a href="#projects"       class="nav-link">Projects</a>
         <a href="#qualifications" class="nav-link">Qualifications</a>
         <a href="#experience"     class="nav-link">Experience</a>
         <a href="#hobbies"        class="nav-link">Hobbies</a>
@@ -586,6 +712,7 @@
         <a href="#home"           class="nav-link active">Home</a>
         <a href="#about"          class="nav-link">About Me</a>
         <a href="#skills"         class="nav-link">Skills</a>
+        <a href="#projects"       class="nav-link">Projects</a>
         <a href="#qualifications" class="nav-link">Qualifications</a>
         <a href="#experience"     class="nav-link">Experience</a>
         <a href="#hobbies"        class="nav-link">Hobbies</a>
@@ -650,7 +777,7 @@
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon"><img src="database.png" alt="Database"></div>
-                            <div class="skill-name">Database Administration</div>
+                            <div class="skill-name">Database</div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-icon"><img src="hosting.png" alt="Hosting"></div>
@@ -662,6 +789,80 @@
                         <span class="scroll-arrow">→</span>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+
+                <!-- Project 1: Zambian Kitchen -->
+                <div class="project-card">
+                    <img class="project-screenshot" src="zambian-kitchen-screenshot.png" alt="Zambian Kitchen Screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="project-screenshot-placeholder" style="display:none;">[ screenshot ]</div>
+                    <div class="project-body">
+                        <div class="project-name">Zambian Kitchen</div>
+                        <div class="project-description">
+                            A web app celebrating Zambian cuisine — browse traditional recipes, explore local ingredients, and discover the flavours of Zambia.
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SKC31/Zambian-Kitchen" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> GitHub</a>
+                            <a href="https://zambian-kitchen.vercel.app/" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: CINGS -->
+                <div class="project-card">
+                    <img class="project-screenshot" src="cings-screenshot.png" alt="CINGS Screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="project-screenshot-placeholder" style="display:none;">[ screenshot ]</div>
+                    <div class="project-body">
+                        <div class="project-name">CINGS</div>
+                        <div class="project-description">
+                            The official web presence for CINGS Enterprises — a clean, professional company site built and deployed for a real-world client.
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SKC31/CINGS" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> GitHub</a>
+                            <a href="https://cings.vercel.app/" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: MedTrack -->
+                <div class="project-card">
+                    <img class="project-screenshot" src="medtrack-screenshot.png" alt="MedTrack Screenshot" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="project-screenshot-placeholder" style="display:none;">[ screenshot ]</div>
+                    <div class="project-body">
+                        <div class="project-name">MedTrack</div>
+                        <div class="project-description">
+                            A medication tracking web app that helps users manage prescriptions, set reminders, and monitor their medication schedules with ease.
+                        </div>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                            <span class="project-tag">Vercel</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/SKC31/MedTrack" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> GitHub</a>
+                            <a href="https://med-track-coral.vercel.app/" target="_blank" class="project-link"><span class="link-arrow">&gt;</span> Live Demo</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -723,7 +924,7 @@
             <div class="contact-list">
                 <div class="contact-item">
                     <div class="contact-icon"><img src="email.png" alt="Email"></div>
-                    <div class="contact-text">Email: sikeletekay@gmail.com</div>
+                    <div class="contact-text">Email: sikeletekay@mail.com</div>
                 </div>
                 <div class="contact-item">
                     <div class="contact-icon"><img src="phone.png" alt="Phone"></div>
